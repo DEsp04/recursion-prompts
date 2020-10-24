@@ -329,14 +329,14 @@ function rMap(array, callback) {
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countKeysInObj(obj, 'r') // 1
 // countKeysInObj(obj, 'e') // 2
-function countKeysInObj(obj, key) {
+function countKeysInObj(obj, key) { //****
   let counter = 0;
 
   for (let keyName in obj) {
     if (keyName === key) { 
       counter++;
-    } else if (typeof obj[key] === 'object') {
-      counter + countKeysInObj(obj[keyName], key)
+    } else if (typeof obj[keyName] === 'object') {
+      counter += countKeysInObj(obj[keyName], key)
     } 
   }
   return counter; 
