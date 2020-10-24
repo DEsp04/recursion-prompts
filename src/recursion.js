@@ -290,16 +290,39 @@ function fizzBuzz(n) {
   }
     return fizzBuzz(n - 1).concat(array);
 };
+
 // 
 // 20. Count the occurence of a value in a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
-};
+function countOccurrence(array, value) {
+    let counter = 0;
+  
+    if (array.length === 1) {
+      if (array[0] === value) {
+       return 1;
+      } else { 
+        return 0;
+      }
+    } else if (array[0] === value) {
+      counter++;
+    }
+    return countOccurrence(array.slice(1), value) + counter;
+  };
+  
 
 // 21. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+function rMap(array, callback) {
+  let newArray = [];
+
+  if (array.length === 1) {
+      return [].concat(callback(array[0]));
+    } else { 
+    newArray.push(callback(array[0]))
+  }  
+
+  return newArray.concat(rMap(array.slice(1), callback));
 };
 
 // 22. Write a function that counts the number of times a key occurs in an object.
